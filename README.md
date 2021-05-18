@@ -12,7 +12,7 @@ It also seemed like it'd be a fun project to do from scratch :D -- If you wanted
 4. Click Start and search for "Device Manager"
 5. Under Network adapters, find the network adapter from Step 3: Right click > Properties > Power Management > Check "Only allow a magic pakcet to wake the computer"
 
-**Now on your Raspberry Pi**
+### Now on your Raspberry Pi !!
 
 ## B. Setting up Environment Variables
 1. Click Start and search for "Edit the system environment variables"
