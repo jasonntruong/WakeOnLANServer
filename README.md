@@ -4,6 +4,7 @@ Yes, there are other ways to do this without any coding necessary, but that requ
 It also seemed like it'd be a fun project to do from scratch :D -- If you wanted to also turn your computer on over LAN, I'll leave how below
 
 **Uses: PHP, Python, SQL, Apache**
+
 **Required: Windows PC, XAMPP Control Panel (https://www.apachefriends.org/download.html), Windows Raspberry Pi**
 
 ## A. Allowing wake on LAN
