@@ -31,10 +31,11 @@ It also seemed like it'd be a fun project to do from scratch :D -- If you wanted
 
 ## E. Setting up your Google Home
 1. Make an IFTTT account (https://ifttt.com/) and set it up with your Google Home
-2. Make a command where the IF is a Google assistant command (make it Turn on Computer or something similar) and the THEN is a webhook/web request
-3. Make the URL field the URL to the screen that says "Wake ON LAN Server" from Step D-3 (public IP address with the php file in the link)
-4. Add "?computer=FROM_GOOGLE_HOME" without the quotations, to the end of the URL field
-5. Make the method GET and leave everything else alone
+2. Make a command where the IF is a Google assistant voice command (make it "Turn on Computer" or something similar) and the THEN is a webhook/web request
+3. Make the URL field the URL to the screen that says "Wake ON LAN Server" from Step D-3 (Make sure it has the public IP address with the php file in the link)
+4. Add "?computer=FROM_GOOGLE_HOME" without the quotations, to the end of the URL field in step E-3. This is the GET web request that sets $computer = FROM_GOOGLE_HOME
+5. Make the method "GET" and leave everything else alone
 
 ## F. Done
 1. Now all you got to do is test it out. Say your command from Step E and the computer, if all things are set up correctly, should turn on
+2. It should also work if you put in the combined URL from E-4 into your browser
