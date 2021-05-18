@@ -3,7 +3,8 @@
 Yes, there are other ways to do this without any coding necessary, but that requires giving services your IP and PC MAC address.
 It also seemed like it'd be a fun project to do from scratch :D -- If you wanted to also turn your computer on over LAN, I'll leave how below
 
-**Required: Windows PC, XAMPP Control Panel (https://www.apachefriends.org/download.html), PHP, Python, Windows Raspberry Pi**
+**Uses: PHP, Python, SQL, Apache**
+**Required: Windows PC, XAMPP Control Panel (https://www.apachefriends.org/download.html), Windows Raspberry Pi**
 
 ## A. Allowing wake on LAN
 1. Go into BIOS and turn on "Wake up over LAN" or something of that nature...depends on your BIOS
