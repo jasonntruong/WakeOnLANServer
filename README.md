@@ -6,4 +6,4 @@ It also seemed like it'd be a fun project to do from scratch so I can get my foo
 
 Currently I'm looking at how to implement encryption and use POST requests rather than GET requests to make the server safer to use
 
-**Uses: PHP, Python, SQL, Apache, XAMPP Control Panel (https://www.apachefriends.org/download.html), Raspberry Pi**
+**Uses: PHP, Python, SQL, Apache Server, Raspberry Pi**
