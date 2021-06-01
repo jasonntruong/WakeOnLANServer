@@ -1,14 +1,18 @@
 <?php
+#error displaying
+ini_set('display_errors', true);
+error_reporting(E_ALL);
+
 echo "Wake On LAN Server by Jason Truong";
 
-$GOOGLE_HOME_PASSWORD = getenv('TURN_ON_PC', true); #Security environment variable. Acts as the password - computer only turns on if POST request matches the password
+$GOOGLE_HOME_PASSWORD = getenv('TURN_ON_PC'); #Security environment variable. Acts as the password - computer only turns on if POST request matches the password
+$PC_PHYS_ADDRESS = getenv('PC_PHYS_ADDRESS'); #Security environment variable. Acts as the MAC address for the computer I want to turn on
 
-#Adds $computer parameter to database. Allows me to track where and when I used my Apache server to turn on my computer in a SQL database
 function addToDB($computer) {
     $servername = "localhost";
     $username = "username";
     $password = "password";
-    $databaseName = "myDataBase";
+    $databaseName="myDatabase";
 
     #form new connection
     $connection = new mysqli($servername, $username, $password, $databaseName);
@@ -17,7 +21,7 @@ function addToDB($computer) {
         echo "Connection error";
         die("Connection failed: " . $connection->connect_error);
     }
-    
+
     $sql = "INSERT INTO computerValues (compVal)
     VALUES ('$computer')";
 
@@ -49,11 +53,10 @@ if(isset($_POST['REQ_PASSWORD'])) {
     $REQ_PASSWORD = $_POST['REQ_PASSWORD'];
 
     #if POST web request $REQ_PASSWORD == $GOOGLE_HOME_PASSWORD
-    if (strcmp($REQ_PASSWORD, $GOOGLE_HOME_PASSWORD) == 0) {
-        addToDB("FROM_GOOGLE_HOME");                            #adds FROM_GOOGLE_HOME to database so I know the web request came from my google home
-        $command = escapeshellcmd('python wakeCompOnLan.py');   #runs python file which sends a magic lan packet to wake computer
-        $output = shell_exec($command);
-        echo $output;
+    if (strcmp($REQ_PASSWORD, $GOOGLE_HOME_PASSWORD) == 0) {  
+	addToDB("FROM_GOOGLE_HOME");	   			 #adds FROM_GOOGLE_HOME to database so I know the web request came from my google home
+	$wakeCommand = shell_exec("python /var/www/html/wakeCompOnLan.py {$PC_PHYS_ADDRESS}");		#runs python file with PC's MAC address which sends a magic lan packet to wake computer
+	echo $wakeCommand;
     }
     else if (empty($REQ_PASSWORD) == false) {           #ex. $REQ_PASSWORD empty on homepage
         addToDB("REQ_PASSWORD {$REQ_PASSWORD}");       #adds to database so I know if someone is using the web request and server elsewhere
