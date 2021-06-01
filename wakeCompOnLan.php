@@ -1,5 +1,5 @@
 <?php
-#error displaying
+#Detecting errors
 ini_set('display_errors', true);
 error_reporting(E_ALL);
 
@@ -55,8 +55,8 @@ if(isset($_POST['REQ_PASSWORD'])) {
     #if POST web request $REQ_PASSWORD == $GOOGLE_HOME_PASSWORD
     if (strcmp($REQ_PASSWORD, $GOOGLE_HOME_PASSWORD) == 0) {  
 	addToDB("FROM_GOOGLE_HOME");	   			 #adds FROM_GOOGLE_HOME to database so I know the web request came from my google home
-	$wakeCommand = shell_exec("python /var/www/html/wakeCompOnLan.py {$PC_PHYS_ADDRESS}");		#runs python file with PC's MAC address which sends a magic lan packet to wake computer
-	echo $wakeCommand;
+	$wakeComputer = shell_exec("wakeonlan {$PC_PHYS_ADDRESS}");		#runs command with PC's MAC address which sends a magic lan packet to wake computer
+	echo $wakeComputer;
     }
     else if (empty($REQ_PASSWORD) == false) {           #ex. $REQ_PASSWORD empty on homepage
         addToDB("REQ_PASSWORD {$REQ_PASSWORD}");       #adds to database so I know if someone is using the web request and server elsewhere
